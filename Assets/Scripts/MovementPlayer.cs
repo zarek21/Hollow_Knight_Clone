@@ -5,16 +5,15 @@ public class MovementPlayer : MonoBehaviour
 {
     // Variables
     [Header("Configuraciones")]
-    public float speed = 0f;
+    public float playerSpeed = 0.0f;
+    private int playerHealth = 100;
 
     private void Start()
     {
-        print("HOLA, SOY START");
     }
 
     private void Update()
     {
-        print("HOLA, SOY UPDATE");
     }
 
-}  // end - class
+}  // end - class - MovementPlayer
