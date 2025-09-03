@@ -50,14 +50,14 @@ MonoBehaviour:
       modes:
       - fontColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
         backgroundColour: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
-      - fontColour: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
-        backgroundColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+      - fontColour: {r: 0.8392157, g: 0.2, b: 0.42352942, a: 1}
+        backgroundColour: {r: 0.80784315, g: 0.83137256, b: 0.85490197, a: 1}
       style:
         m_Name: Header (Centered)
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+          m_TextColor: {r: 0.8392157, g: 0.2, b: 0.42352942, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -130,14 +130,14 @@ MonoBehaviour:
       modes:
       - fontColour: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
         backgroundColour: {r: 0.7960785, g: 0.7960785, b: 0.7960785, a: 1}
-      - fontColour: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
-        backgroundColour: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 1}
+      - fontColour: {r: 0.68235296, g: 0.24313726, b: 0.7882353, a: 1}
+        backgroundColour: {r: 0.80784315, g: 0.83137256, b: 0.85490197, a: 1}
       style:
         m_Name: Subheader
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
+          m_TextColor: {r: 0.68235296, g: 0.24313726, b: 0.7882353, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -210,14 +210,14 @@ MonoBehaviour:
       modes:
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.38568, g: 0.6335747, b: 0.764151, a: 1}
-      - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
+      - fontColour: {r: 0.25882354, g: 0.3882353, b: 0.92156863, a: 1}
+        backgroundColour: {r: 0.80784315, g: 0.83137256, b: 0.85490197, a: 1}
       style:
         m_Name: Mini Header (Centered)
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+          m_TextColor: {r: 0.25882354, g: 0.3882353, b: 0.92156863, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -4521,6 +4521,19 @@ MonoBehaviour:
         excluded: 0
         isBuiltIn: 0
         script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+        hasToggle: 1
+      - displayName: MovementPlayer
+        name: MovementPlayer, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        content:
+          m_Text: MovementPlayer
+          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: MovementPlayer
+          m_TextWithWhitespace: "MovementPlayer\u200B"
+        shown: 0
+        excluded: 0
+        isBuiltIn: 0
+        script: {fileID: 11500000, guid: 12d1a5227e5141d478941df2df01c5f1, type: 3}
         hasToggle: 1
     unityVersion: 6000.0.55f1
     unityCount: 319

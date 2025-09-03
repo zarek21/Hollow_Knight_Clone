@@ -9,10 +9,10 @@ using UnityEngine;
 public class MovementPlayer : MonoBehaviour
 {
     // Variables
-    [Header("Propiedades")]
+    [Header("Propiedades Jugador")]
     public Transform transformPlayer;
 
-    [Header("Configuraciones")]
+    [Header("Configuraciones Movimiento")]
     public float playerSpeed = 0.0f;
 
     private void Start()
