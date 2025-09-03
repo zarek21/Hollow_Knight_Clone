@@ -11,9 +11,9 @@ public class MovementPlayer : MonoBehaviour
     // Variables
     [Header("Propiedades")]
     public Transform transformPlayer;
+
     [Header("Configuraciones")]
     public float playerSpeed = 0.0f;
-    private int playerHealth = 100;
 
     private void Start()
     {
@@ -21,6 +21,18 @@ public class MovementPlayer : MonoBehaviour
 
     private void Update()
     {
+        // Movimiento Izquierda
+        if (Input.GetKeyDown(KeyCode.A)) 
+        {
+            print("Vamos a la izquierda");
+        }
+
+        // Movimiento Derecha
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            print("Vamos a la derecha");
+        }
+
     }
 
 }  // end - class - MovementPlayer
