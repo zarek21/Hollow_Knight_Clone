@@ -9,24 +9,23 @@ using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
+
     // Variables 
     public Transform transformPlayer;
     public Rigidbody2D rigidBody2DPlayer;
     public SpriteRenderer spriteRenderer;
 
+
     // Private Variables
     private bool isGrounded = false ;
 
+
     [Header("PLAYER STATS")]
     [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] private float jumpForce = 10.0f;
+    [SerializeField] private float jumpForce = 15.0f;
+    [SerializeField] private float downardForce = 25.0f;
 
-    /*
-public Transform transformPlayer;
-public Rigidbody2D rigidbodyPlayer;
-    */
 
-    // donde empieza el Frame 1. Frame 2 dejo de llamarse 
     void Start()
     {
         print("Start inicia aqui");
@@ -34,6 +33,7 @@ public Rigidbody2D rigidbodyPlayer;
         rigidBody2DPlayer = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     } //end Start
+
 
     void Update()
     {
@@ -71,24 +71,37 @@ public Rigidbody2D rigidbodyPlayer;
     }//end Update
 
 
+    private void FixedUpdate()
+    {
+        /* Esto simula la fuerza de empuje hacia abajo
+        para logar un efecto más disfrutable al saltar */
+        rigidBody2DPlayer.AddForce(Vector3.down * downardForce, ForceMode2D.Force);
+    } // end of FixedUpdate
+
+
+    // Colisión para entradas
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Colisión con "Ground"
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            print("Estas en el suelo");
+            isGrounded = true;
+        }
+    }
+
+
+    // Colisión para salidas
     private void OnCollisionExit2D(Collision2D collision)
     {
+        // Colisión con "Ground"
         if (collision.gameObject.CompareTag("Ground"))
         {
             print("Estas fuera de el suelo");
             isGrounded = false;
         }
         
-    }
+    } // end of onCollisionExit
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            print("Estas en el suelo");
-            isGrounded = true;
-        }
 
-    }
-
-}  // end - class - MovementPlayer
+}  // end MovementPlayer

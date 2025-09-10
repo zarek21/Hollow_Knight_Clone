@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 1943966891}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,7 +788,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 1
 --- !u!212 &2078370986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -910,6 +910,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformPlayer: {fileID: 2078370987}
   rigidBody2DPlayer: {fileID: 2078370985}
+  spriteRenderer: {fileID: 2078370986}
+  moveSpeed: 5
+  jumpForce: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
