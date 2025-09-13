@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 10885296022753051}
   - component: {fileID: 591312616475867107}
   m_Layer: 0
-  m_Name: Cochinilla_Wall_Left_Side
+  m_Name: Cochinilla_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
