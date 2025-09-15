@@ -1,107 +1,122 @@
-// using - Librer韆s -  Funciones prestadas de otros scripts 
+// using - Librer铆as -聽 Funciones prestadas de otros scripts
+
 using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-///  Zarek 03 septiembre 2025
+///聽 Zarek 03 septiembre 2025
 /// </summary>
-
-
 public class MovementPlayer : MonoBehaviour
 {
+    // Variables
 
-    // Variables 
     public Transform transformPlayer;
+
     public Rigidbody2D rigidBody2DPlayer;
+
     public SpriteRenderer spriteRenderer;
 
-
     // Private Variables
-    private bool isGrounded = false ;
 
+    private bool isGrounded = false;
 
     [Header("PLAYER STATS")]
-    [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] private float jumpForce = 15.0f;
-    [SerializeField] private float downardForce = 25.0f;
+    [SerializeField]
+    private float moveSpeed = 5.0f;
 
+    [SerializeField]
+    private float jumpForce = 15.0f;
+
+    [SerializeField]
+    private float downardForce = 25.0f;
 
     void Start()
     {
         print("Start inicia aqui");
+
         //Jala el rb del objeto
+
         rigidBody2DPlayer = GetComponent<Rigidbody2D>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
     } //end Start
-
 
     void Update()
     {
         // Movimiento Izq
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             print("Vamos a la izq");
 
-            //Ignora las fisicas 
-            //transformPlayer.position += new Vector3(-1f,0f,0f);
-            rigidBody2DPlayer.AddForce(Vector2.left * moveSpeed);
-            
-            // Cambiamos su direcci髇 en el eje x
-            spriteRenderer.flipX = false;
+            //Ignora las fisicas
 
+            //transformPlayer.position += new Vector3(-1f,0f,0f);
+
+            rigidBody2DPlayer.AddForce(Vector2.left * moveSpeed);
+
+            // Cambiamos su direcci贸n en el eje x
+
+            spriteRenderer.flipX = false;
         }
 
         // Movimiento Der
+
         if (Input.GetKeyDown(KeyCode.D))
         {
             print("Vamos a la Der");
-            //transformPlayer.position +=  Vector3.right;
+
+            //transformPlayer.position +=聽 Vector3.right;
             rigidBody2DPlayer.AddForce(Vector2.right * moveSpeed);
-            
-            // Cambiamos su direcci髇 en el eje x
+
+            // Cambiamos su direcci贸n en el eje x
             spriteRenderer.flipX = true;
         }
 
         // Salto
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
             print("Ya no estas tocando el suelo y estas saltando");
-            rigidBody2DPlayer.AddForce(Vector3.up * jumpForce,ForceMode2D.Impulse);
+
+            rigidBody2DPlayer.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-
-    }//end Update
-
+    } //end Update
 
     private void FixedUpdate()
     {
         /* Esto simula la fuerza de empuje hacia abajo
-        para logar un efecto m醩 disfrutable al saltar */
+        
+        para logar un efecto m谩s disfrutable al saltar */
+
         rigidBody2DPlayer.AddForce(Vector3.down * downardForce, ForceMode2D.Force);
     } // end of FixedUpdate
 
+    // Colisi贸n para entradas
 
-    // Colisi髇 para entradas
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Colisi髇 con "Ground"
+        // Colisi贸n con "Ground"
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             print("Estas en el suelo");
+
             isGrounded = true;
         }
     }
 
+    // Colisi贸n para salidas
 
-    // Colisi髇 para salidas
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // Colisi髇 con "Ground"
+        // Colisi贸n con "Ground"
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             print("Estas fuera de el suelo");
+
             isGrounded = false;
         }
-        
     } // end of onCollisionExit
-
-
-}  // end - MovementPlayer
+} // end - MovementPlayer
