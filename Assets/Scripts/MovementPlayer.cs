@@ -32,7 +32,7 @@ public class MovementPlayer : MonoBehaviour
         print("Start inicia aqui");
         //Jala el rb del objeto
         rigidBody2DPlayer = this.GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
     } //end Start
 
     void Update()
@@ -70,6 +70,8 @@ public class MovementPlayer : MonoBehaviour
 
             rigidBody2DPlayer.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+
+        movement = new Vector2(Input.GetAxis("Horizontal"), 0.0f);
     } //end Update
 
     private void FixedUpdate()
@@ -77,10 +79,16 @@ public class MovementPlayer : MonoBehaviour
         /* Esto simula la fuerza de empuje hacia abajo
         para logar un efecto más disfrutable al saltar */
         rigidBody2DPlayer.AddForce(Vector2.down * downardForce, ForceMode2D.Force);
+        moveCharacter(movement);
         
         
     } // end of FixedUpdate
 
+
+    void moveCharacter(Vector2 direction) 
+    {
+        rigidBody2DPlayer.linearVelocity = new Vector2(direction.x * moveSpeed, rigidBody2DPlayer.linearVelocity.y);
+    }
 
     // Colisión para entradas
     private void OnCollisionEnter2D(Collision2D collision)
