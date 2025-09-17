@@ -9,15 +9,12 @@ using UnityEngine;
 public class MovementPlayer : MonoBehaviour
 {
     // Variables
-
     public Transform transformPlayer;
-
     public Rigidbody2D rigidBody2DPlayer;
-
     public SpriteRenderer spriteRenderer;
+    public Vector2 movement; // set movement input variable (x,y)
 
     // Private Variables
-
     private bool isGrounded = false;
 
     [Header("PLAYER STATS")]
@@ -33,18 +30,14 @@ public class MovementPlayer : MonoBehaviour
     void Start()
     {
         print("Start inicia aqui");
-
         //Jala el rb del objeto
-
-        rigidBody2DPlayer = GetComponent<Rigidbody2D>();
-
+        rigidBody2DPlayer = this.GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     } //end Start
 
     void Update()
     {
         // Movimiento Izq
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             print("Vamos a la izq");
@@ -53,7 +46,6 @@ public class MovementPlayer : MonoBehaviour
 
             //transformPlayer.position += new Vector3(-1f,0f,0f);
 
-            rigidBody2DPlayer.AddForce(Vector2.left * moveSpeed);
 
             // Cambiamos su dirección en el eje x
 
@@ -61,20 +53,17 @@ public class MovementPlayer : MonoBehaviour
         }
 
         // Movimiento Der
-
         if (Input.GetKeyDown(KeyCode.D))
         {
             print("Vamos a la Der");
 
             //transformPlayer.position +=  Vector3.right;
-            rigidBody2DPlayer.AddForce(Vector2.right * moveSpeed);
 
             // Cambiamos su dirección en el eje x
             spriteRenderer.flipX = true;
         }
 
         // Salto
-
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             print("Ya no estas tocando el suelo y estas saltando");
@@ -86,24 +75,24 @@ public class MovementPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         /* Esto simula la fuerza de empuje hacia abajo
-        
         para logar un efecto más disfrutable al saltar */
-
-        rigidBody2DPlayer.AddForce(Vector3.down * downardForce, ForceMode2D.Force);
+        rigidBody2DPlayer.AddForce(Vector2.down * downardForce, ForceMode2D.Force);
+        
+        
     } // end of FixedUpdate
 
-    // Colisión para entradas
 
+    // Colisión para entradas
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Colisión con "Ground"
-
         if (collision.gameObject.CompareTag("Ground"))
         {
             print("Estas en el suelo");
 
             isGrounded = true;
         }
+
     }
 
     // Colisión para salidas
@@ -111,7 +100,6 @@ public class MovementPlayer : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         // Colisión con "Ground"
-
         if (collision.gameObject.CompareTag("Ground"))
         {
             print("Estas fuera de el suelo");
