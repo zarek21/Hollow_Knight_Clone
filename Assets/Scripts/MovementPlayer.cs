@@ -29,7 +29,7 @@ public class MovementPlayer : MonoBehaviour
 
     void Start()
     {
-        print("Start inicia aqui");
+        print(GameReferences.Texts.START);
         //Jala el rb del objeto
         rigidBody2DPlayer = this.GetComponent<Rigidbody2D>();
         spriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -40,7 +40,7 @@ public class MovementPlayer : MonoBehaviour
         // Movimiento Izq
         if (Input.GetKeyDown(KeyCode.A))
         {
-            print("Vamos a la izq");
+            print(GameReferences.Texts.VAMOS_A_LA_IZQUIERDA);
 
             //Ignora las fisicas
 
@@ -55,7 +55,7 @@ public class MovementPlayer : MonoBehaviour
         // Movimiento Der
         if (Input.GetKeyDown(KeyCode.D))
         {
-            print("Vamos a la Der");
+            print(GameReferences.Texts.VAMOS_A_LA_DERECHA);
 
             //transformPlayer.position +=  Vector3.right;
 
@@ -66,7 +66,7 @@ public class MovementPlayer : MonoBehaviour
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            print("Ya no estas tocando el suelo y estas saltando");
+            print(GameReferences.Texts.YA_NO_ESTAS_EN_EL_SUELO_Y_ESTAS_SALTANDO);
 
             rigidBody2DPlayer.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -96,7 +96,7 @@ public class MovementPlayer : MonoBehaviour
         // Colisión con "Ground"
         if (collision.gameObject.CompareTag(GameReferences.Tags.GROUND))
         {
-            print("Estas en el suelo");
+            print(GameReferences.Texts.ESTAS_EN_EL_SUELO);
 
             isGrounded = true;
         }
@@ -110,7 +110,7 @@ public class MovementPlayer : MonoBehaviour
         // Colisión con "Ground"
         if (collision.gameObject.CompareTag(GameReferences.Tags.GROUND))
         {
-            print("Estas fuera de el suelo");
+            print(GameReferences.Texts.ESTAS_FUERA_DEL_SUELO);
 
             isGrounded = false;
         }
