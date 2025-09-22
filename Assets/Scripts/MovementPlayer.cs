@@ -94,7 +94,7 @@ public class MovementPlayer : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Colisión con "Ground"
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag(GameReferences.Tags.GROUND))
         {
             print("Estas en el suelo");
 
@@ -108,7 +108,7 @@ public class MovementPlayer : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         // Colisión con "Ground"
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag(GameReferences.Tags.GROUND))
         {
             print("Estas fuera de el suelo");
 
