@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: 741dedc949f5b9c4a92812a7733dcf05
+guid: 1a30a5e9ddd6d49469cdf68dc03f15d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7558518512911910703
-    second: tut_land_floor_0002_02_0
+      213: -1108100723162366782
+    second: SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_0
   - first:
-      213: -7553351393613758478
-    second: tut_land_floor_0002_02_1
+      213: 7138637998670212499
+    second: SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_1
+  - first:
+      213: 5135269419868224613
+    second: SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_2
+  - first:
+      213: 2618910477674260723
+    second: SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_3
+  - first:
+      213: 5574070573611397972
+    second: SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_4
+  - first:
+      213: -5096659480309695128
+    second: SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,45 +128,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tut_land_floor_0002_02_0
+      name: SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1027
-        height: 125
+        x: 445
+        y: 963
+        width: 18
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d8fba1957fba1790800000000000000
-      internalID: -7558518512911910703
+      spriteID: 2ccbd84634c3f90f0800000000000000
+      internalID: -1108100723162366782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tut_land_floor_0002_02_1
+      name: SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 268
-        height: 38
+        width: 445
+        height: 484
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ff33f74dea1d2790800000000000000
-      internalID: -7553351393613758478
+      spriteID: 3f8a250343d385420800000000000000
+      internalID: 2618910477674260723
       vertices: []
       indices: 
       edges: []
@@ -163,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 629cb5ceacf173045aa1df22a6ce05e7
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +185,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tut_land_floor_0002_02_0: -7558518512911910703
-      tut_land_floor_0002_02_1: -7553351393613758478
+      SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_0: -1108100723162366782
+      SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_1: 7138637998670212499
+      SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_2: 5135269419868224613
+      SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_3: 2618910477674260723
+      SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_4: 5574070573611397972
+      SpriteAtlasTexture-Tut_Rocks-1024x1024-fmt12_5: -5096659480309695128
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
