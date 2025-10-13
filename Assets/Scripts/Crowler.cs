@@ -6,6 +6,7 @@ public class Crowler : MonoBehaviour
     [SerializeField]
     private float speed = 2f;
     public bool movingRight = true;
+
     [Header("Detección")]
     public Transform groundCheck;
     public Transform wallCheck;
@@ -13,22 +14,21 @@ public class Crowler : MonoBehaviour
     public float checkDistanceY = 0.3f;
     public LayerMask ayerMaskWall;
 
-    Rigidbody2D rb;
+    Rigidbody2D enemyRb;
     SpriteRenderer spriteRenderer;
 
     //
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        enemyRb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
     void FixedUpdate()
     {
-        // Operador ternario para dirección, primer valor si es true, segundo si es false
         float moveDir = movingRight ? 1f : -1f;
-        rb.linearVelocity = new Vector2(moveDir * speed, rb.linearVelocity.y);
+        enemyRb.linearVelocity = new Vector2(moveDir * speed, enemyRb.linearVelocity.y);
 
         // Detectar pared y falta de suelo
         bool hitWall = Physics.Raycast(wallCheck.position, movingRight ? Vector2.right : Vector2.left, checkDistanceX, ayerMaskWall);
@@ -43,9 +43,7 @@ public class Crowler : MonoBehaviour
 
     private void Update()
     {
-        // Debug Rays
         Debug.DrawRay(wallCheck.position, (movingRight ? Vector2.right : Vector2.left) * checkDistanceX, Color.red);
-        //CircleCast
         Debug.DrawRay(groundCheck.position, Vector2.down * checkDistanceY, Color.blue);
 
     }

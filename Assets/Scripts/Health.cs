@@ -5,7 +5,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
 
-    [Header("Efectos de Muerte")]
+    [Header("RECOMPENSA SOLTADA")]
     [SerializeField] private GameObject coinPrefab;
 
     private void Awake()
