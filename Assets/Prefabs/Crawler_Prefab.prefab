@@ -95,8 +95,8 @@ Transform:
   m_GameObject: {fileID: 9075949609223570878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.313, y: 1.439, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.313, y: 1.439, z: 0.11}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2992906002668082272}
@@ -278,6 +278,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   contactDamage: 1
+  attackCooldown: 1
 --- !u!95 &3846507534433355484
 Animator:
   serializedVersion: 7
@@ -312,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492ff92b0c08f484c9935801e8fb636c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 5
   knockbackForce: 5
   coinPrefab: {fileID: 4503631280238127811, guid: 8e01ced58b53a704a91fc639ee064a88, type: 3}
   deathEffectPrefab: {fileID: 3652238104721834995, guid: 8b471a6d79d0f014698a393be42648c0, type: 3}
