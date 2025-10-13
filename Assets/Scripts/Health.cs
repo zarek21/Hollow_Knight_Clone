@@ -5,6 +5,9 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
 
+    [Header("Efectos de Muerte")]
+    [SerializeField] private GameObject coinPrefab;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -33,6 +36,12 @@ public class Health : MonoBehaviour
     private void Die()
     {
         Debug.Log(gameObject.name + " ha muerto.");
+
+        if (coinPrefab != null) 
+        {
+            Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 }

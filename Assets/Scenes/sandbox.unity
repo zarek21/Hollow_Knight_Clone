@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  coinPrefab: {fileID: 4503631280238127811, guid: 8e01ced58b53a704a91fc639ee064a88, type: 3}
 --- !u!1001 &2739654149553875896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,6 +454,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 325755533}
-  - {fileID: 2739654149553875896}
   - {fileID: 2716111932607559311}
+  - {fileID: 2739654149553875896}
   - {fileID: 620854475}
