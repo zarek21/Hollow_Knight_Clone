@@ -12,11 +12,11 @@ TagManager:
   - 
   - Water
   - UI
-  - GrayLayer
-  - Background
-  - Gameplay
-  - Foreground
-  - Wall
+  - Ground
+  - Enemy
+  - 
+  - 
+  - 
   - 
   - 
   - 
