@@ -3,7 +3,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private float knockbackForce = 5.0f;
     private int currentHealth;
+
+    private MovementPlayer movementPlayer; // REFERENCIA AL SCRIPT DE MOVIMIENTO
 
     [Header("RECOMPENSA SOLTADA")]
     [SerializeField] private GameObject coinPrefab;
@@ -11,21 +14,20 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
+        movementPlayer = GetComponent<MovementPlayer>(); // OBTENEMOS LA REFERENCIA
     }
 
-    private void Update()
-    {
-        // Si presionamos la tecla 'K'
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(1); // Le hacemos 1 de daño al objeto que tenga este script
-        }
-    }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount, Transform damageSource)
     {
         currentHealth -= damageAmount;
         Debug.Log(gameObject.name + " recibió " + damageAmount + " de daño. Vida restante: " + currentHealth);
+
+        if (movementPlayer != null)
+        {
+            Vector2 knockbackDirection = (transform.position - damageSource.position).normalized;
+            movementPlayer.ApplyKnockback(knockbackDirection,knockbackForce);
+        }
 
         if (currentHealth <= 0) 
         {

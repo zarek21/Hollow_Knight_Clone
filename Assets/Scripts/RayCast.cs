@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class RayCast : MonoBehaviour
@@ -11,27 +12,46 @@ public class RayCast : MonoBehaviour
     [SerializeField] private float checkRadius = 0.1f; // El radio de detección
     [SerializeField] private LayerMask whatIsGround; // La capa del suelo/paredes
 
+    [Header("Combate")]
+    [SerializeField] private int contactDamage = 1;
+
     private Rigidbody2D rb;
     private bool isFacingRight = true;
+    private Animator animator;
+
+    // VARIABLES PARA SISTEMA DE ESTADOS
+    private bool playerInAttackRange = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
-        // Usamos OverlapCircle en lugar de Raycast. Es como un raycast "gordito", más robusto.
-        bool isTouchingWall = Physics2D.OverlapCircle(wallCheckPoint.position, checkRadius, whatIsGround);
-        bool isNearLedge = !Physics2D.OverlapCircle(ledgeCheckPoint.position, checkRadius, whatIsGround); // ¡Nota la negación '!' aquí!
+        // Si el jugador no está en nuestro rango, patrullamos.
+        if (!playerInAttackRange)
+        {
+            Patrol();
+        }
+        else
+        {
+            // Si el jugador SÍ está en nuestro rango, dejamos de movernos.
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
 
-        // Si tocamos una pared O estamos cerca de un abismo, nos damos la vuelta.
+    void Patrol()
+    {
+        bool isTouchingWall = Physics2D.OverlapCircle(wallCheckPoint.position, checkRadius, whatIsGround);
+        bool isNearLedge = !Physics2D.OverlapCircle(ledgeCheckPoint.position, checkRadius, whatIsGround);
+
         if (isTouchingWall || isNearLedge)
         {
             Flip();
         }
 
-        // Aplicamos el movimiento
         float moveDirection = isFacingRight ? 1f : -1f;
         rb.linearVelocity = new Vector2(moveSpeed * moveDirection, rb.linearVelocity.y);
     }
@@ -42,18 +62,30 @@ public class RayCast : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
-    // Para poder ver los puntos de detección en el Editor
-    private void OnDrawGizmos()
+    // Esta se llama cuando algo entra en nuestra ZONA DE AGRESIÓN (el CircleCollider2D)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (wallCheckPoint != null)
+        if (other.CompareTag("Player"))
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(wallCheckPoint.position, checkRadius);
-        }
-        if (ledgeCheckPoint != null)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(ledgeCheckPoint.position, checkRadius);
+            playerInAttackRange = true;
+            animator.SetTrigger("attack"); // Inicia la animación de ataque
+
+            // Hacemos daño aquí por ahora
+            if (other.TryGetComponent<Health>(out Health playerHealth))
+            {
+                playerHealth.TakeDamage(contactDamage,this.transform);
+            }
         }
     }
+
+    // Esta se llama cuando algo sale de nuestra ZONA DE AGRESIÓN
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInAttackRange = false;
+        }
+    }
+
+    
 }
