@@ -323,11 +323,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2513008212178074286, guid: 43f93e44ec426f34296a55512ce1ca11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.42
+      value: -4.51
       objectReference: {fileID: 0}
     - target: {fileID: 2513008212178074286, guid: 43f93e44ec426f34296a55512ce1ca11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.21
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: 2513008212178074286, guid: 43f93e44ec426f34296a55512ce1ca11, type: 3}
       propertyPath: m_LocalPosition.z
@@ -543,6 +543,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2813615111430731889, guid: 1c78c00a50be54f4a8f93238a71588e7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813615111430731889, guid: 1c78c00a50be54f4a8f93238a71588e7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6957550345976368189, guid: 1c78c00a50be54f4a8f93238a71588e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.44
@@ -594,6 +602,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9075949609223570878, guid: 1c78c00a50be54f4a8f93238a71588e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2716111932607559313}
+    - targetCorrespondingSourceObject: {fileID: 9075949609223570878, guid: 1c78c00a50be54f4a8f93238a71588e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2716111932607559319}
   m_SourcePrefab: {fileID: 100100000, guid: 1c78c00a50be54f4a8f93238a71588e7, type: 3}
 --- !u!1 &2716111932607559312 stripped
 GameObject:
@@ -614,6 +625,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   coinPrefab: {fileID: 4503631280238127811, guid: 8e01ced58b53a704a91fc639ee064a88, type: 3}
+--- !u!111 &2716111932607559319
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716111932607559312}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 6cb94e897c56a3145895ea209eb9626b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1001 &2739654149553875896
 PrefabInstance:
   m_ObjectHideFlags: 0
