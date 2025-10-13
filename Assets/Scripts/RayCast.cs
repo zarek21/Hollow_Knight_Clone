@@ -14,6 +14,7 @@ public class RayCast : MonoBehaviour
 
     [Header("Combate")]
     [SerializeField] private int contactDamage = 1;
+    [SerializeField] private float attackCooldown = 2.0f;
 
     private Rigidbody2D rb;
     private bool isFacingRight = true;
@@ -22,6 +23,10 @@ public class RayCast : MonoBehaviour
     // VARIABLES PARA SISTEMA DE ESTADOS
     private bool playerInAttackRange = false;
 
+    // VARIABLES LÓGICA GENERAL
+    private float attackCooldownTimer = 0f; 
+    private Health playerHealth;     
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,15 +35,43 @@ public class RayCast : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Si el jugador no está en nuestro rango, patrullamos.
+        // Si el temporizador está contando, lo reducimos.
+        if (attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.fixedDeltaTime;
+        }
+
         if (!playerInAttackRange)
         {
-            Patrol();
+            Patrol(); // Si el jugador no está cerca, patrullamos.
         }
         else
         {
-            // Si el jugador SÍ está en nuestro rango, dejamos de movernos.
-            rb.linearVelocity = Vector2.zero;
+            // Si el jugador está cerca, paramos de patrullar.
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+            // Y si el temporizador está listo (en cero), atacamos.
+            if (attackCooldownTimer <= 0)
+            {
+                Attack();
+            }
+        }
+    }
+
+    private void Attack()
+    {
+        Debug.Log("¡Crawler ataca!");
+
+        // Reiniciamos el temporizador al valor del cooldown
+        attackCooldownTimer = attackCooldown;
+
+        // Activamos la animación
+        animator.SetTrigger("attack");
+
+        // Hacemos daño al jugador (si todavía tenemos la referencia)
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(contactDamage, this.transform);
         }
     }
 
@@ -62,30 +95,24 @@ public class RayCast : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
-    // Esta se llama cuando algo entra en nuestra ZONA DE AGRESIÓN (el CircleCollider2D)
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             playerInAttackRange = true;
-            animator.SetTrigger("attack"); // Inicia la animación de ataque
-
-            // Hacemos daño aquí por ahora
-            if (other.TryGetComponent<Health>(out Health playerHealth))
-            {
-                playerHealth.TakeDamage(contactDamage,this.transform);
-            }
+            // Guardamos una referencia a la vida del jugador
+            playerHealth = other.GetComponent<Health>();
         }
     }
 
-    // Esta se llama cuando algo sale de nuestra ZONA DE AGRESIÓN
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             playerInAttackRange = false;
+            playerHealth = null; // Olvidamos al jugador cuando se va
         }
     }
 
-    
+
 }

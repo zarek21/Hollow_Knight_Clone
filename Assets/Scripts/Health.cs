@@ -8,9 +8,9 @@ public class Health : MonoBehaviour
 
     private MovementPlayer movementPlayer; // REFERENCIA AL SCRIPT DE MOVIMIENTO
 
-    [Header("RECOMPENSA SOLTADA")]
+    [Header("EFECTOS DE MUERTE")]
     [SerializeField] private GameObject coinPrefab;
-
+    [SerializeField] private GameObject deathEffectPrefab;
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -42,6 +42,11 @@ public class Health : MonoBehaviour
         if (coinPrefab != null) 
         {
             Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        }
+
+        if (deathEffectPrefab != null) 
+        {
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
         }
 
         Destroy(gameObject);
